@@ -160,13 +160,13 @@ document.getElementById("page2")
 
 function clickReward(){
 
-// 只記錄測試參與，不收集任何密碼
-
 console.log(
-"點擊者：",
+"有人參與資安測試：",
 userID
 );
 
+
+//送紀錄到 Google Sheet
 fetch(
 "https://script.google.com/macros/s/AKfycbw4k485xxaXhL1YX1pQH2m07qrAUcX3Lsr5zy7jhBdSPQxoaLmod9vt3UV4GZKYWOw-YA/exec?id="
 + userID,
@@ -176,6 +176,8 @@ mode:"no-cors"
 }
 );
 
+
+
 document.getElementById("page2")
 .classList.add("hidden");
 
@@ -183,22 +185,23 @@ document.getElementById("page3")
 .classList.remove("hidden");
 
 
+
 setTimeout(()=>{
 
 document.getElementById("bar")
 .style.width="100%";
 
-},200);
+},300);
 
 
 
 setTimeout(()=>{
 
 document.getElementById("result")
-.innerHTML=
-"正在取得資料...<br><br>😈 駭客表示：這麼容易？";
+.innerHTML =
+"分析完成...<br><br>⚠️ 你剛剛點擊了未確認來源的連結";
 
-},1200);
+},1500);
 
 
 
@@ -210,12 +213,10 @@ document.getElementById("page3")
 document.getElementById("page4")
 .classList.remove("hidden");
 
-
-},3000);
+},3500);
 
 
 }
-
 </script>
 
 
