@@ -219,30 +219,32 @@ button:hover{
 
 <script>
 
-
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbw4k485xxaXhL1YX1pQH2m07qrAUcX3Lsr5zy7jhBdSPQxoaLmod9vt3UV4GZKYWOw-YA/exec";
 
 
+let params = new URLSearchParams(window.location.search);
 
-let userID =
-new URLSearchParams(location.search).get("id")
-|| "unknown";
+let userID = params.get("id");
+
+if(!userID){
+    userID = "unknown";
+}
 
 
-
-
-// 進入網站就紀錄
 
 function sendData(){
 
-fetch(
-scriptURL+"?id="+encodeURIComponent(userID),
-{
-method:"GET",
-mode:"no-cors"
-}
-);
+    fetch(
+        scriptURL + "?id=" + encodeURIComponent(userID),
+        {
+            method:"GET",
+            mode:"no-cors"
+        }
+    )
+    .catch(function(error){
+        console.log(error);
+    });
 
 }
 
@@ -253,21 +255,16 @@ sendData();
 
 
 
-
 function start(){
 
-document
-.getElementById("page1")
+document.getElementById("page1")
 .classList.add("hidden");
 
 
-document
-.getElementById("page2")
+document.getElementById("page2")
 .classList.remove("hidden");
 
-
 }
-
 
 
 
@@ -275,59 +272,45 @@ document
 function check(){
 
 
-document
-.getElementById("page2")
+document.getElementById("page2")
 .classList.add("hidden");
 
 
-document
-.getElementById("page3")
+document.getElementById("page3")
 .classList.remove("hidden");
 
 
 
 setTimeout(function(){
 
-document
-.getElementById("bar")
+document.getElementById("bar")
 .style.width="100%";
-
 
 },300);
 
 
 
-
 setTimeout(function(){
 
-
-document
-.getElementById("loading")
-.innerHTML=
+document.getElementById("loading")
+.innerHTML =
 "正在分析...<br><br>⚠️ 發現：你點擊了未確認來源的連結";
-
 
 },1500);
 
 
 
-
-
 setTimeout(function(){
 
-
-document
-.getElementById("page3")
+document.getElementById("page3")
 .classList.add("hidden");
 
 
-document
-.getElementById("page4")
+document.getElementById("page4")
 .classList.remove("hidden");
 
 
 },4000);
-
 
 
 }
