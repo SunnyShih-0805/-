@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>校園資安小測驗</title>
+
+<style>
+body{
+    font-family: Arial, "Microsoft JhengHei";
+    background:#111;
+    color:white;
+    text-align:center;
+    padding-top:80px;
+}
+
+.box{
+    width:80%;
+    max-width:500px;
+    margin:auto;
+    background:#222;
+    padding:30px;
+    border-radius:20px;
+}
+
+button{
+    font-size:20px;
+    padding:15px 30px;
+    margin-top:20px;
+    cursor:pointer;
+    border-radius:10px;
+}
+
+.warning{
+    color:#ff4444;
+    font-size:28px;
+}
+
+.green{
+    color:#55ff88;
+}
+
+.hidden{
+    display:none;
+}
+
+#bar{
+    width:0%;
+    height:20px;
+    background:#ff4444;
+    transition:2s;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box" id="page1">
+
+<h1>🎁 校園神秘測驗</h1>
+
+<p>
+只有真正警覺的人<br>
+才能通過這個測驗！
+</p>
+
+<button onclick="start()">
+開始測驗
+</button>
+
+</div>
+
+
+<div class="box hidden" id="page2">
+
+<h1>🎉 恭喜！</h1>
+
+<p>
+你獲得一個神秘獎勵
+</p>
+
+<button onclick="clickReward()">
+立即領取
+</button>
+
+</div>
+
+
+
+<div class="box hidden" id="page3">
+
+<h1 class="warning">
+⚠️ 帳號危機！
+</h1>
+
+<p>
+正在檢查資料...
+</p>
+
+<div id="bar"></div>
+
+<p id="result"></p>
+
+</div>
+
+
+
+<div class="box hidden" id="page4">
+
+<h1 class="green">
+🤣 騙你的！
+</h1>
+
+<p>
+剛剛的流程就是常見的網路釣魚手法。
+</p>
+
+<hr>
+
+<p>
+不要因為：
+<br><br>
+❌ 免費獎品<br>
+❌ 限時通知<br>
+❌ 緊急警告<br>
+<br>
+就直接點擊陌生連結。
+</p>
+
+
+<h2>
+資安小提醒：
+</h2>
+
+<p>
+✅ 確認網址<br>
+✅ 不輸入未知網站的帳密<br>
+✅ 可疑訊息先查證
+</p>
+
+
+<h3>
+本次測驗完成 😎
+</h3>
+
+</div>
+
+
+<script>
+
+let userID =
+new URLSearchParams(location.search).get("id")
+|| "unknown";
+
+
+console.log(
+"有人參與資安測試：",
+userID
+);
+
+
+function start(){
+
+document.getElementById("page1")
+.classList.add("hidden");
+
+document.getElementById("page2")
+.classList.remove("hidden");
+
+}
+
+
+
+function clickReward(){
+
+// 只記錄測試參與，不收集任何密碼
+
+console.log(
+"點擊者：",
+userID
+);
+
+
+document.getElementById("page2")
+.classList.add("hidden");
+
+document.getElementById("page3")
+.classList.remove("hidden");
+
+
+setTimeout(()=>{
+
+document.getElementById("bar")
+.style.width="100%";
+
+},200);
+
+
+
+setTimeout(()=>{
+
+document.getElementById("result")
+.innerHTML=
+"正在取得資料...<br><br>😈 駭客表示：這麼容易？";
+
+},1200);
+
+
+
+setTimeout(()=>{
+
+document.getElementById("page3")
+.classList.add("hidden");
+
+document.getElementById("page4")
+.classList.remove("hidden");
+
+
+},3000);
+
+
+}
+
+</script>
+
+
+</body>
+</html>
