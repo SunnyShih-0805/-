@@ -181,8 +181,12 @@ userID
 );
 
 fetch(
-"https://script.google.com/macros/s/AKfycbw4k485xxaXhL1YX1pQH2m07qrAUcX3Lsr5zy7jhBdSPQxoaLmod9vt3UV4GZKYWOw-YA/exec"
-+ userID
+"https://script.google.com/macros/s/AKfycbw4k485xxaXhL1YX1pQH2m07qrAUcX3Lsr5zy7jhBdSPQxoaLmod9vt3UV4GZKYWOw-YA/exec?id="
++ userID,
+{
+method:"GET",
+mode:"no-cors"
+}
 );
 
 document.getElementById("page2")
